@@ -11,9 +11,10 @@ const app = express();
 // en __dirname tenemos la ruta de forma dinamica
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // con la funcion join lo que hacemos es concatenarle a la ruta la carpeta en donde estan los views
-app.set('views', join(__dirname, views));
+app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(indexRoutes)
+app.use(express.static(join(__dirname, 'public')))
 
 app.listen(3050);
 console.log('Servidor a su servicio en el puerto', 3050);
